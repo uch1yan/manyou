@@ -1,3 +1,4 @@
+<%= flash[:success] %>
 <h1>Task 一覧</h1>
 
 <table>
@@ -12,8 +13,8 @@
 		<td><%= task.content %></td>
 		<td><%= link_to '詳細画面へ', task_path(task.id) %></td>
 		<td><%= link_to '編集画面へ', edit_task_path(task.id) %></td>
-		<% end %>
 	</tr>
+	<% end %>
 </table>
 
 
