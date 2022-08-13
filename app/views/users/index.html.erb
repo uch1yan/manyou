@@ -1,0 +1,19 @@
+<%= form_with(model: @user, local :true) do |form| %> 
+
+	<h1>Task 一覧</h1>
+
+	<table>
+		<tr>
+			<th>Task title:</th>
+			<th>Task content:</th>
+		</tr>
+
+		<tr>
+			<% @users.each do |user| %>
+			<td><%= user.title %></td>
+			<td><%= user.content %></td>
+			<% end %>
+		</tr>
+	</table>
+
+

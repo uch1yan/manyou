@@ -1,0 +1,23 @@
+<h1>Task 一覧</h1>
+
+<table>
+	<tr>
+		<th>Task title:</th>
+		<th>Task content:</th>
+	</tr>
+
+	<tr>
+		<% @tasks.each do |task| %>
+		<td><%= task.title %></td>
+		<td><%= task.content %></td>
+		<td><%= link_to '詳細画面へ', task_path(task.id) %></td>
+		<% end %>
+	</tr>
+</table>
+
+
+
+
+
+
+
