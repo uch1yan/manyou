@@ -1,0 +1,28 @@
+<%= flash[:success] %>
+<h1>Task 一覧</h1>
+
+<table>
+	<tr>
+		<th>Task title:</th>
+		<th>Task content:</th>
+	</tr>
+
+	<tr>
+		<% @tasks.each do |task| %>
+		<td><%= task.title %></td>
+		<td><%= task.content %></td>
+		<td><%= link_to '詳細', task_path(task.id) %></td>
+		<td><%= link_to '編集', edit_task_path(task.id) %></td>
+		<td><%= link_to '削除', task_path(task.id), method: :delete, data: ['Are you sure?'] %></td>
+	</tr>
+	<% end %>
+</table>
+
+<%= link_to '新規登録画面へ', new_task_path %>
+
+
+
+
+
+
+
