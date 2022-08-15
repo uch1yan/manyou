@@ -6,6 +6,8 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+config.time_zone = '東京'
+
 module TaskApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
