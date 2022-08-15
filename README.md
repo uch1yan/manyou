@@ -1,14 +1,14 @@
 # README
 
-| User     |         |
-| -------- | ------- |
-| id       | integer |
-| name     | string  |
-| password | integer |
+| User            |         |
+| --------------- | ------- |
+| id (PK)         | integer |
+| name            | string  |
+| password_digest | integer |
 
 | Task     |         |
 | -------- | ------- |
-| id       | integer |
+| id (PK)  | integer |
 | title    | string  |
 | content  | text    |
 | deadline | string  |
@@ -19,10 +19,11 @@
 
 | Task_labels |         |
 | ----------- | ------- |
+| id (PK)     | integer |
 | user_id     | integer |
-| label_id    | integer |
+| task_id     | integer |
 
-| label   |         |
-| ------- | ------- |
-| name    | string  |
-| task_id | integer |
+| label      |         |
+| ---------- | ------- |
+| id (PK)    | integer |
+| label_name | string  |
