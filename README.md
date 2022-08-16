@@ -27,3 +27,18 @@
 | ---------- | ------- |
 | id (PK)    | integer |
 | label_name | string  |
+
+---
+
+**Heroku デプロイ手順**
+
+---
+
+1. heroku login
+2. heroku create
+3. git add .
+4. git commit -m"heroku deploy"
+5. heroku buildpacks:set heroku/ruby
+6. heroku buildpacks:add --index 1 heroku/nodejs
+7. git push heroku master
+8. heroku run rails db:migrate
