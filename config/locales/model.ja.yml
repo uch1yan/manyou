@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      task: タスク
+      user: ユーザー
+    attributes:
+      task:
+        title: タイトル
+        content: 内容
+        deadline: 締め切り
+        priority: 優先順位
+        status: 状況
+      user:
+        name: 名前
+        password_digest: パスワード
