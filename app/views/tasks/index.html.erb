@@ -7,8 +7,8 @@
 		<th>Task content:</th>
 	</tr>
 
+<% @tasks.each do |task| %>
 	<tr class="task_row">
-		<% @tasks.each do |task| %>
 		<td><%= task.title %></td>
 		<td><%= task.content %></td>
 		<td><%= link_to '詳細', task_path(task.id) %></td>
