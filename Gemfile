@@ -40,7 +40,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'spring-commands-rspec'
 gem 'faker'
 gem 'launchy'
-
-# gem 'net-imap'
-# gem 'net-pop'
-# gem 'net-smtp'
