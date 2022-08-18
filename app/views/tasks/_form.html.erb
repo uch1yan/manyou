@@ -11,19 +11,27 @@
 		</div>
 	<% end %>
 
-	<%= form.label :title %>
-	<%= form.text_field :title %>
+	<table>
+		<tr class="task_title">
+			<%= form.label :title %>
+			<%= form.text_field :title %>
+		</tr>
 
-	<%= form.label :content %>
-	<%= form.text_field :content %>
+		<tr class="task_content">
+			<%= form.label :content %>
+			<%= form.text_field :content %>
+		</tr>
 
-	<%= form.label :deadline %>
-	<%= form.text_field :deadline %>
+		<tr class="task_deadline">
+			<%= form.label :deadline %>
+			<%= form.text_field :deadline %>
+		</tr>
 
-	<%= form.label :status %>
-	<%= form.select :status, [["未着手", "未着手"], ["着手中", "着手中"], ["完了", "完了"]], include_blank: "選択してください" %>
-
-	
+		<tr class="task_status">
+			<%= form.label :status %>
+			<%= form.select :status, Task.statuses.keys, include_blank: "選択してください" %>
+		</tr>
+	</table>
 	<br>
 
 	<%= form.submit '登録' %>

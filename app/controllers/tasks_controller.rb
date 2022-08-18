@@ -6,6 +6,17 @@ class TasksController < ApplicationController
 		else  
 			@tasks = Task.all.order(created_at: "DESC") 
 		end 
+
+		if params[:task]
+			if task_params[:title] && task_params[:status].present?
+			@tasks = Task.title_status(task_params[:title], task_params[:status])
+			elsif task_params[:title]
+			@tasks = Task.search_title(task_params[:title])
+			elsif task_params[:status]
+			@tasks = Task.search_status(task_params[:status])
+			end 
+		end 
+		@tasks = @tasks.page(params[:page])
 	end 
 
 	def show 
@@ -49,6 +60,8 @@ class TasksController < ApplicationController
 			render :index 
 		end
 	end 
+
+	
 
 	private
 

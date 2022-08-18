@@ -1,6 +1,15 @@
 <%= flash[:success] %>
 <h1>Task 一覧</h1>
 
+<%= form_with(url: tasks_path, scope: :task, method: :get, local: true) do |form| %>
+	<p>タスク名</p>
+	<p><%= form.text_field :title %></p>
+
+	<p>ステータス名</p>
+	<p><%= form.select :status, Task.statuses.keys, include_blank: "選択してください" %></p>
+	<p><%= form.submit '検索'%></p>
+<% end %>
+
 <table>
 	<tr>
 		<th>Task title:</th>

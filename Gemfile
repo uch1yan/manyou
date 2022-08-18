@@ -10,8 +10,12 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
-
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'kaminari'
+gem 'bootstrap', '~> 4.4.1'
+gem 'jquery-rails'
+gem 'bootstrap4-kaminari-views'
+gem 'bcrypt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -20,6 +24,10 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rexml'
   gem 'pry-rails'
+  gem 'spring-commands-rspec'
+  gem 'faker'
+  gem 'launchy'
+
 
 
 end
@@ -39,6 +47,3 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'spring-commands-rspec'
-gem 'faker'
-gem 'launchy'
