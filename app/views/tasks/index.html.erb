@@ -16,6 +16,7 @@
 		<th>Task content:</th>
 		<th>Deadline</th>
 		<th>Status</th>
+		<th>Priority</th>
 	</tr>
 
 <% @tasks.each do |task| %>
@@ -24,6 +25,8 @@
 		<td><%= task.content %></td>
 		<td><%= task.deadline %></td>
 		<td><%= task.status %></td>
+		<td><%= task.priority %></td>
+
 		<td><%= link_to '詳細', task_path(task.id) %></td>
 		<td><%= link_to '編集', edit_task_path(task.id) %></td>
 		<td><%= link_to '削除', task_path(task.id), method: :delete, data: ['Are you sure?'] %></td>
@@ -33,6 +36,7 @@
 
 <p><%= link_to '新規登録画面へ', new_task_path %></p>
 <p><%= link_to '終了期限でソートする', tasks_path(sort_expired: "true") %></p>
+<p><%= link_to '優先順位でソートする', tasks_path(sort_priority: "true") %></p>
 
 
 
