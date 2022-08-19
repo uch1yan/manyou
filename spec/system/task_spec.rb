@@ -59,6 +59,19 @@ RSpec.describe 'タスク管理機能', type: :system do
         expect(task_list[1]).to have_content '2022-08-15'
       end 
     end 
+
+    context '優先順位でソートするというリンクを押した場合' do 
+      it '優先順位の高い順に並び替えられる' do 
+        FactoryBot.create(:task, title: 'test1', content: 'wash dishes', priority: '中')
+        FactoryBot.create(:task, title: 'test2', content: 'take a walk', priority: '高')
+        visit tasks_path 
+        click_link '優先順位でソートする'
+        sleep(2)
+        task_list = all('.task_row') 
+        expect(task_list[0]).to have_content '高'
+        expect(task_list[1]).to have_content '中'
+      end 
+    end
   end
 
   describe '詳細表示機能' do
@@ -103,19 +116,6 @@ RSpec.describe 'タスク管理機能', type: :system do
         expect(page).to have_content 'cleaning'
         expect(page).to have_content '完了'
       end 
-    end 
-
-    # context '優先順位でソートするというリンクを押した場合' do 
-    #   it '優先順位の高い順に並び替えられる' do 
-    #     FactoryBot.create(:task, title: 'cleaning', content: 'clean the room', priority: '中')
-    #     FactoryBot.create(:task, title: 'laundry', content: 'do laundry', priority: '高')
-    #     visit tasks_path 
-    #     click_link '優先順位でソートする'
-    #     sleep(2)
-    #     task_list = all('.task_row') 
-    #     expect(task_list[0]).to have_content '高'
-    #     expect(task_list[1]).to have_content '中'
-    #   end 
-    # end
+    end
   end  
 end
