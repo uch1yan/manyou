@@ -11,7 +11,7 @@ RSpec.describe 'タスク管理機能', type: :system do
 				visit new_task_path
 				fill_in 'task_title', with: 'cleaning'
 				fill_in 'task_content', with: 'clean the room'
-        fill_in 'task_deadline', with: '2022-08-15'
+        fill_in 'task_deadline', with: '2022-08-25'
         select '未着手', from: 'task_status'
 				click_on '登録'
 				expect(page).to have_content 'cleaning'
@@ -26,9 +26,9 @@ RSpec.describe 'タスク管理機能', type: :system do
 				click_on '登録'
 				expect(page).to have_content '完了'
       end
-
     end
   end
+  
   describe '一覧表示機能' do
     context '一覧画面に遷移した場合' do
       it '作成済みのタスク一覧が表示される' do
