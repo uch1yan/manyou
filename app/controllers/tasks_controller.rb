@@ -18,7 +18,7 @@ class TasksController < ApplicationController
 			@tasks = Task.search_status(task_params[:status])
 			end 
 		end 
-		@tasks = @tasks.page(params[:page])
+		@tasks = @tasks.page(params[:page]).per(5)
 	end 
 
 	def show 
@@ -47,7 +47,7 @@ class TasksController < ApplicationController
 		@task = Task.find(params[:id])
 		if @task.update(task_params)
 			redirect_to tasks_path 
-			flash[:success] = 'Taskを更新しました!'
+			flash[:info] = 'Taskを更新しました!'
 		else  
 			render :edit 
 		end 
@@ -57,7 +57,7 @@ class TasksController < ApplicationController
 		@task = Task.find(params[:id])
 		if @task.destroy 
 			redirect_to tasks_path 
-			flash[:success] = 'Taskを削除しました!'
+			flash[:danger] = 'Taskを削除しました!'
 		else  
 			render :index 
 		end

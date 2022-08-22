@@ -11,34 +11,36 @@
 		</div>
 	<% end %>
 
+	<div class="row justify-content-center">
 	<table>
 		<tr class="task_title">
-			<%= form.label :title %>
-			<%= form.text_field :title %>
+			<p class="mr-3"><%= form.label :title %>
+			<%= form.text_field :title %></p>
 		</tr>
 
 		<tr class="task_content">
-			<%= form.label :content %>
-			<%= form.text_field :content %>
+			<p class="mr-2"><%= form.label :content %>
+			<%= form.text_field :content %></p>
 		</tr>
 
 		<tr class="task_deadline">
-			<%= form.label :deadline %>
-			<%= form.text_field :deadline %>
+			<p class="mr-2"><%= form.label :deadline %>
+			<%= form.text_field :deadline %></p>
 		</tr>
 
 		<tr class="task_status">
-			<%= form.label :status %>
-			<%= form.select :status, Task.statuses.keys, include_blank: "選択してください" %>
+			<p class="mr-2"><%= form.label :status %>
+			<%= form.select :status, Task.statuses.keys, include_blank: "選択してください" %></p>
 		</tr>
 
 		<tr class="task_priority">
-			<%= form.label :priority %>
-			<%= form.select :priority, Task.priorities.keys, include_blank: "選択してください" %>
+			<p class="mr-2"><%= form.label :priority %>
+			<%= form.select :priority, Task.priorities.keys, include_blank: "選択してください" %></p>
 		</tr>
 	</table>
 	<br>
 
-	<%= form.submit '登録' %>
+	<p class="mr-2"><%= form.submit '登録' %></p>
+	</div>
 <% end %>
 
