@@ -1,3 +1,9 @@
 class User < ApplicationRecord
-  has_many :tasks, dependent: :destroy, foreign_key: :task_user_id
+  has_many :tasks, dependent: :destroy
+  validates :name, presence: true, length: { maximum: 30 }
+  validates :email, presence: true, length: { maximum: 255 } 
+  # before_validation ( email.downcase! )
+  has_secure_password
+  validates :password, length: { minimum: 6}
+
 end
