@@ -22,6 +22,7 @@ end
 
 def show 
 	@user = User.find(params[:id])
+	@tasks = current_user.tasks.order(created_at: :desc)
 end 
 
 end
