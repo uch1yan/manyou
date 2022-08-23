@@ -1,12 +1,13 @@
 class TasksController < ApplicationController
+  before_action :login_required, only: [:index]
 
 	def index 
 		if params[:sort_expired]
-			@tasks = Task.all.order(deadline: "DESC")
+			@tasks = current_user.tasks.order(deadline: "DESC")
 		elsif params[:sort_priority] 
-			@tasks = Task.all.order(priority: "DESC") 
+			@tasks = current_user.tasks.order(priority: "DESC") 
 		else 
-			@tasks = Task.all.order(created_at: "DESC") 
+			@tasks = current_user.tasks.order(created_at: "DESC") 
 		end 
 
 		if params[:task]
@@ -26,7 +27,7 @@ class TasksController < ApplicationController
 	end 
 
 	def new 
-		@task = current_user.tasks.build(task_params)
+		@task = current_user.tasks.build
 	end 
 
 	def create 
