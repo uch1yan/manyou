@@ -1,0 +1,21 @@
+<h1 class="text-center">【管理画面】User一覧画面<h1>
+
+<table class="table table-striped table table-hover">
+	<tr class="w-100 border">
+	<div class="row">
+		<th class="col-2">User id</th>
+		<th class="col-2">User name</th>
+  </div>
+  </tr>
+
+  <% @users.each do |user| %>
+  <tr class="user_row">
+    <td class="col-2"><%= user.id %> </td>
+    <td class="col-2"><%= user.name %></td>
+  </tr>
+  <% end %>
+</table>
+
+<div class="text-center">
+  <button type="button" class="btn btn-outline-info"><%= link_to 'ユーザー新規登録画面へ', new_admin_user_path %></button>
+</div>
