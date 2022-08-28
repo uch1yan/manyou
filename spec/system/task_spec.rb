@@ -1,7 +1,12 @@
 require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
-  let!(:task) { FactoryBot.create(:task) }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:task) { FactoryBot.create(:task, user: user) }
   before do 
+    visit new_session_path
+		fill_in 'session_email', with: 'test@gmail.com'
+    fill_in 'session_password', with: '000000'
+		click_on 'Log in'
     visit tasks_path 
   end 
 
@@ -38,8 +43,8 @@ RSpec.describe 'タスク管理機能', type: :system do
 
     context 'タスクが作成日時の降順に並んでいる場合' do 
       it '新しいタスクが一番上に表示される' do
-        FactoryBot.create(:task, title: 'cleaning', content: 'clean the room')
-        FactoryBot.create(:task, title: 'laundry', content: 'do laundry')
+        FactoryBot.create(:task, title: 'cleaning', content: 'clean the room', user: user)
+        FactoryBot.create(:task, title: 'laundry', content: 'do laundry', user: user)
         visit tasks_path 
         task_list = all('.task_row') 
         expect(task_list[0]).to have_content 'laundry'
@@ -49,8 +54,8 @@ RSpec.describe 'タスク管理機能', type: :system do
 
     context '終了期限でソートするというリンクを押した場合' do
       it '終了期限の降順に並び替えられたタスク一覧が表示される' do
-        FactoryBot.create(:task, title: 'cleaning', content: 'clean the room', deadline: '2022-08-15')
-        FactoryBot.create(:task, title: 'laundry', content: 'do laundry', deadline: '2022-08-18')
+        FactoryBot.create(:task, title: 'cleaning', content: 'clean the room', deadline: '2022-08-15', user: user)
+        FactoryBot.create(:task, title: 'laundry', content: 'do laundry', deadline: '2022-08-18', user: user)
         visit tasks_path 
         click_link '終了期限でソートする'
         sleep(2)
@@ -62,8 +67,8 @@ RSpec.describe 'タスク管理機能', type: :system do
 
     context '優先順位でソートするというリンクを押した場合' do 
       it '優先順位の高い順に並び替えられる' do 
-        FactoryBot.create(:task, title: 'test1', content: 'wash dishes', priority: '中')
-        FactoryBot.create(:task, title: 'test2', content: 'take a walk', priority: '高')
+        FactoryBot.create(:task, title: 'test1', content: 'wash dishes', priority: '中', user: user)
+        FactoryBot.create(:task, title: 'test2', content: 'take a walk', priority: '高', user: user)
         visit tasks_path 
         click_link '優先順位でソートする'
         sleep(2)
@@ -77,7 +82,7 @@ RSpec.describe 'タスク管理機能', type: :system do
   describe '詳細表示機能' do
     context '任意のタスク詳細画面に遷移した場合' do
       it '該当タスクの内容が表示される' do
-				@task = FactoryBot.create(:task, content: 'clean the room')
+				@task = FactoryBot.create(:task, content: 'clean the room', user: user)
 				visit task_path(@task)
 				expect(page).to have_content('clean the room')
       end
@@ -86,8 +91,8 @@ RSpec.describe 'タスク管理機能', type: :system do
 
   describe '検索機能' do 
     before do 
-        FactoryBot.create(:task, title: 'cleaning')
-        FactoryBot.create(:second_task, title: 'laundry')
+        FactoryBot.create(:task, title: 'cleaning', user: user)
+        FactoryBot.create(:second_task, title: 'laundry', user: user)
     end 
 
     context 'タイトルであいまい検索をした場合' do 
