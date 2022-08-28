@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
   before_action :login_required, only: [:index]
+	before_action :authenticate_user, only: %i[new]
 
-	def index 
+	def index  
+		@tasks = current_user.tasks.order(created_at: "DESC") 
 		if params[:sort_expired]
 			@tasks = current_user.tasks.order(deadline: "DESC")
 		elsif params[:sort_priority] 
 			@tasks = current_user.tasks.order(priority: "DESC") 
-		else 
-			@tasks = current_user.tasks.order(created_at: "DESC") 
 		end 
 
 		if params[:task]
@@ -27,8 +27,12 @@ class TasksController < ApplicationController
 	end 
 
 	def new 
-		@task = current_user.tasks.build
-	end 
+    if params[:back]
+      @task = Task.new(task_params)
+    else
+      @task = Task.new
+    end
+  end
 
 	def create 
 		@task = current_user.tasks.build(task_params)
@@ -71,5 +75,12 @@ class TasksController < ApplicationController
 	def task_params 
 		params.require(:task).permit(:title, :content, :deadline, :status, :priority)
 	end 
+
+	def authenticate_user 
+		unless @user = current_user 
+			redirect_to tasks_path 
+		end  
+	end 
+
 end
 

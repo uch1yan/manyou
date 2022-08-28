@@ -5,6 +5,12 @@
 	<div class="row">
 		<th class="col-2">User id</th>
 		<th class="col-2">User name</th>
+    <th class="col-2">User task数</th>
+    <th class="col-2">管理者権限</th>
+    <th class="col-1"></th>
+    <th class="col-1"></th>
+    <th class="col-1"></th>
+    <th class="col-1"></th>
   </div>
   </tr>
 
@@ -12,10 +18,17 @@
   <tr class="user_row">
     <td class="col-2"><%= user.id %> </td>
     <td class="col-2"><%= user.name %></td>
+    <td class="col-2"><%= user.tasks.count %></td>
+    <td class="col-2"><%= user.admin? ? 'admin' : '' %></td>
+    <td class="col-1"><button type="button" class="btn btn-outline-primary"><%= link_to '詳細',  admin_user_path(user.id) %></button></td>
+		<td class="col-1"><button type="button" class="btn btn-outline-success"><%= link_to '編集', edit_admin_user_path(user.id) %></button></td>
+		<td class="col-1"><button type="button" class="btn btn-outline-danger"><%= link_to '削除', admin_user_path(user.id), method: :delete, data: ['Are you sure?'] %></button></td>
+    <td class="col-1"></td>
   </tr>
   <% end %>
 </table>
 
 <div class="text-center">
   <button type="button" class="btn btn-outline-info"><%= link_to 'ユーザー新規登録画面へ', new_admin_user_path %></button>
+  <button type="button" class="btn btn-outline-info"><%= link_to 'Task一覧へ', tasks_path %></button>
 </div>
