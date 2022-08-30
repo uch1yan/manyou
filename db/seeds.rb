@@ -10,8 +10,24 @@ User.create!(name: "admin", email: "admin@gmail.com", password: "000000", passwo
 User.create!(name: "manami", email: "manami@gmail.com", password: "000000", password_confirmation: "000000", admin: false)
 User.create!(name: "bay", email: "bay@gmail.com", password: "000000", password_confirmation: "000000", admin: true)
 
-Label.create!(name: "work")
-Label.create!(name: "housework")
-Label.create!(name: "hobby")
+10.times do |n|
+  User.create!(
+    email: "test#{n + 1}@test.com",
+    name: "test_User#{n + 1}",
+    password: "000000"
+    password_confirmation: "000000",
+    admin: false
+  )
+end
 
+10.times do |n|
+  Task.create!(
+    name: "Task#{n + 1}",
+  )
+end
 
+10.times do |n|
+  Label.create!(
+    name: "Label#{n + 1}",
+  )
+end
