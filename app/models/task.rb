@@ -1,5 +1,8 @@
 class Task < ApplicationRecord
 	belongs_to :user
+	has_many :labellings, dependent: :destroy 
+	has_many :labels, through: :labellings, source: :label
+
   validates :title, presence: true
   validates :content, presence: true
 	validates :deadline, presence: true 
@@ -12,4 +15,5 @@ class Task < ApplicationRecord
 	scope :search_title, -> (title){ where("title LIKE ?", "%#{title}%")}
 	scope :search_status, -> (status){ where(status: status)}
 	scope :title_status, -> (title, status){where("title LIKE ?","%#{title}%").where(status: status)}
+
 end

@@ -37,6 +37,12 @@
 			<p class="mr-2"><%= form.label :priority %>
 			<%= form.select :priority, Task.priorities.keys, include_blank: "選択してください" %></p>
 		</tr>
+
+		<tr class="task_label">
+			<p class="m-2"><%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+			<label style="background-color: aquamarine"></label></p>
+		</tr>
+
 	</table>
 	<br>
 
