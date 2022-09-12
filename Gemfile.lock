@@ -152,6 +152,7 @@ GEM
     kgio (2.11.4)
     launchy (2.5.0)
       addressable (~> 2.7)
+    libv8-node (16.10.0.0-x86_64-linux)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -164,6 +165,8 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_racer (0.6.3)
+      libv8-node (~> 16.10.0.0)
     minitest (5.16.2)
     msgpack (1.5.4)
     net-scp (1.2.1)
@@ -345,6 +348,7 @@ DEPENDENCIES
   kaminari
   launchy
   listen (~> 3.3)
+  mini_racer
   pg (~> 1.1)
   pry-rails
   puma (~> 5.0)
