@@ -11,7 +11,6 @@ User.create!(name: "test_admin", email: "test_admin@gmail.com", password: "00000
 10.times do |n|
   User.create!(
     name: "test_User#{n + 1}",
-    binding.pry
     email: "test#{n + 1}@test.com",
     password: "000000",
     password_confirmation: "000000",
